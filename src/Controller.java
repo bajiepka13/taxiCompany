@@ -1,7 +1,11 @@
+import IOOperations.IOFileWriter;
 import ParkCars.AutoFactory;
 import ParkCars.Car;
+import IOOperations.Path;
 import TaxiPark.TaxiCompany;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -32,7 +36,13 @@ public class Controller {
     }
 
     public static void saveTaxiPark(){
-
+        File file = Path.getFile();
+        if (!file.exists()){
+            try {
+                IOFileWriter myWriter = new IOFileWriter();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
-
 }

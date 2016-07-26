@@ -12,9 +12,10 @@ public abstract class NonGasCars extends Vehicle implements Rechargeable {
 
     @Override
     public String toString() {
-        return "NonGasCar"  + brand + "\t" + model + "\t" +
-                "fuelConsumptionRate=" + fuelConsumptionRate +
-                ", fuelType='" + fuelType + '\'' +
-                '}';
+        return String.format("[%s, %s, burns %.2f of %s]",
+                model,                      //[1]
+                this.getClass().getSimpleName(),  //[2]
+                fuelConsumptionRate,        //[3]
+                fuelType);                  //[4]
     }
 }

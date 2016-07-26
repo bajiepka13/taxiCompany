@@ -1,5 +1,7 @@
 package ParkCars;
 
+import java.util.Formatter;
+
 /**
  * Created by skydock on 22.07.2016.
  */
@@ -12,9 +14,10 @@ public abstract class GasCars extends Vehicle implements Refuelable{
 
     @Override
     public String toString() {
-        return "GasCars{" + brand + ":" + model +
-                "fuelConsumptionRate=" + fuelConsumptionRate +
-                ", fuelType='" + fuelType + '\'' +
-                '}';
+        return String.format("%s, %s, burns %.2f of %s",
+                model,                      //[1]
+                this.getClass().getName(),  //[2]
+                fuelConsumptionRate,        //[3]
+                fuelType);                  //[4]
     }
 }

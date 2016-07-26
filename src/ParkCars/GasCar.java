@@ -1,5 +1,8 @@
 package ParkCars;
 
+import ModelScanner.ModelScanner;
+import Randomizator.RandomValue;
+
 import java.util.Scanner;
 
 /**
@@ -7,13 +10,9 @@ import java.util.Scanner;
  */
 public class GasCar extends GasCars {
     GasCar(){
-        fuelConsumptionRate = 8;
+        fuelConsumptionRate = RandomValue.getRandomNumber(8);
         fuelType = "gas";
-        Scanner s = new Scanner(System.in);
-        System.out.println("Enter car Brand");
-        setBrand(s.next());
-        System.out.println("Enter car Model");
-        setModel(s.next());
+        setModel(ModelScanner.getCarModel());
     }
 
     @Override
@@ -26,8 +25,4 @@ public class GasCar extends GasCars {
         super.setModel(this.model);
     }
 
-    @Override
-    public void setBrand(String brand) {
-        super.setBrand(this.brand);
-    }
 }
