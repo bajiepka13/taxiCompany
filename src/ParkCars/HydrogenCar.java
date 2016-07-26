@@ -16,6 +16,12 @@ public class HydrogenCar extends NonGasCars {
         setModel(ModelScanner.getCarModel());
     }
 
+    public HydrogenCar(double fuelRate, String fuelType, String model){
+        this.fuelConsumptionRate = fuelRate;
+        this.fuelType = fuelType;
+        setModel(model);
+    }
+
     @Override
     public void getRechargableRate(double d, String s) {
         super.getRechargableRate(this.fuelConsumptionRate, this.fuelType);

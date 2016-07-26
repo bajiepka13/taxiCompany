@@ -1,6 +1,7 @@
 package ParkCars;
 
 import java.util.Formatter;
+import java.util.Locale;
 
 /**
  * Created by skydock on 22.07.2016.
@@ -14,7 +15,8 @@ public abstract class GasCars extends Vehicle implements Refuelable{
 
     @Override
     public String toString() {
-        return String.format("%s, %s, burns %.2f of %s",
+        Locale.setDefault(Locale.US);
+        return String.format("[%s,%s,%.2f/100 km of %s]",
                 model,                      //[1]
                 this.getClass().getName(),  //[2]
                 fuelConsumptionRate,        //[3]
