@@ -1,3 +1,4 @@
+import IOOperations.IOFileReader;
 import IOOperations.IOFileWriter;
 import ParkCars.AutoFactory;
 import ParkCars.Car;
@@ -6,6 +7,7 @@ import TaxiPark.TaxiCompany;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -31,8 +33,12 @@ public class Controller {
         }
     }
 
-    public static void initTaxiPark(){
-
+    public static void initTaxiPark() throws IOException {
+        try {
+            IOFileReader reader = new IOFileReader();
+        } finally {
+            System.out.println("job done");
+        }
     }
 
     public static void saveTaxiPark(){

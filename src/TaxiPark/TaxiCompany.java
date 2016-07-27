@@ -22,4 +22,8 @@ public class TaxiCompany {
     public static List<Car> getCarList() {
         return carList;
     }
+
+    public static  void addCarToList(Car newCar) {
+        carList.add(newCar);
+    }
 }

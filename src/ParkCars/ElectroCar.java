@@ -16,9 +16,9 @@ public class ElectroCar extends NonGasCars {
         setModel(ModelScanner.getCarModel());
     }
 
-    public ElectroCar(double fuelRate, String fuelType, String model){
+    public ElectroCar(double fuelRate, String model){
         this.fuelConsumptionRate = fuelRate;
-        this.fuelType = fuelType;
+        this.fuelType = "electricity";
         setModel(model);
     }
 

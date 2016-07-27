@@ -22,4 +22,17 @@ public class ModelScanner {
         }
         return String.format("%s (%s)",Model[0], Model[1]);
     }
+
+    public static boolean getAnotherCar(){
+
+        Boolean b = null;
+
+        System.out.println("do you want to add car to taxi park?");
+        String string = s.next();
+
+        if (string == "yes"){
+            b = true;
+        }
+        return b;
+    }
 }
