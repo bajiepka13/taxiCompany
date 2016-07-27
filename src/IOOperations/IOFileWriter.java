@@ -13,10 +13,11 @@ public class IOFileWriter {
     public IOFileWriter() throws IOException {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(Path.getFile()));
-
+        boolean firstLine = true;
         try {
             for (Car car : TaxiCompany.getCarList()) {
-                writer.write(car.toString());
+                writer.write((firstLine ? "":"\n" ) + car.toString());
+                firstLine = false;
             }
         } finally {
             writer.close();

@@ -16,9 +16,9 @@ public class DieselCar extends GasCars {
         setModel(ModelScanner.getCarModel());
     }
 
-    public DieselCar(double fuelRate, String fuelType, String model){
+    public DieselCar(double fuelRate, String model){
         this.fuelConsumptionRate = fuelRate;
-        this.fuelType = fuelType;
+        this.fuelType = "diesel";
         setModel(model);
     }
 
@@ -29,7 +29,7 @@ public class DieselCar extends GasCars {
 
     @Override
     public void setModel(String model) {
-        super.setModel(this.model);
+        this.model = model;
     }
 
 }

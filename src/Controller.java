@@ -1,5 +1,6 @@
 import IOOperations.IOFileReader;
 import IOOperations.IOFileWriter;
+import ModelScanner.ModelScanner;
 import ParkCars.AutoFactory;
 import ParkCars.Car;
 import IOOperations.Path;
@@ -19,6 +20,9 @@ public class Controller {
 
     }
 
+    /**
+     * Method serves as factory init for another car instance
+     */
     public static void createCarFrmFactory(){
 
         TaxiPark.TaxiCompany park = TaxiCompany.getInstance();
@@ -26,13 +30,17 @@ public class Controller {
 
         AutoFactory autoFactory = new AutoFactory();
 
-        carList.add(autoFactory.getCar("electric"));
+        carList.add(autoFactory.getCar(ModelScanner.getCarType()));
 
         for (Car car : carList){
             System.out.println(car.getClass().getName() + " : " + car.toString());
         }
     }
 
+    /**
+     * Method inits further file reading from file and puts it's content to sungleton TaxiCompany
+      * @throws IOException
+     */
     public static void initTaxiPark() throws IOException {
         try {
             IOFileReader reader = new IOFileReader();
@@ -41,14 +49,16 @@ public class Controller {
         }
     }
 
+    /**
+     * Method saves all content of singleton to file in specified way
+     */
     public static void saveTaxiPark(){
         File file = Path.getFile();
-        if (!file.exists()){
-            try {
-                IOFileWriter myWriter = new IOFileWriter();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+        try {
+            IOFileWriter myWriter = new IOFileWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

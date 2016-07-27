@@ -16,9 +16,9 @@ public class HydrogenCar extends NonGasCars {
         setModel(ModelScanner.getCarModel());
     }
 
-    public HydrogenCar(double fuelRate, String fuelType, String model){
+    public HydrogenCar(double fuelRate, String model){
         this.fuelConsumptionRate = fuelRate;
-        this.fuelType = fuelType;
+        this.fuelType = "hydrogen";
         setModel(model);
     }
 
@@ -29,7 +29,7 @@ public class HydrogenCar extends NonGasCars {
 
     @Override
     public void setModel(String model) {
-        super.setModel(this.model);
+        this.model = model;
     }
 
 }

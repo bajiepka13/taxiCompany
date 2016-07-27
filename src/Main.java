@@ -1,3 +1,4 @@
+import ModelScanner.ModelScanner;
 import ParkCars.Car;
 import Randomizator.RandomValue;
 import TaxiPark.*;
@@ -25,8 +26,10 @@ public class Main {
             System.out.println(car.toString());
         }
 
-        /* запускаем фабрику */
-        Controller.createCarFrmFactory();
+        while (ModelScanner.getAnotherCar()) {
+            /* запускаем фабрику */
+            Controller.createCarFrmFactory();
+        }
 
         /* сохраняемся в файл по-умолчанию */
         Controller.saveTaxiPark();
