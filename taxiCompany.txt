@@ -1,0 +1,4 @@
+[Toyota (Corolla),ElectroCar,35.23/100 km of electricity]
+[Volga (3110),ParkCars.DieselCar,11.61/100 km of diesel]
+[Opel (Forza),ParkCars.GasCar,8.63/100 km of gas]
+[Mercedes (E600),ParkCars.DieselCar,12.32/100 km of diesel]
