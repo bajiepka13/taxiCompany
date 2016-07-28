@@ -1,7 +1,8 @@
-package Randomizator;
+package randomizator;
 
 /**
- * Created by skydock on 26.07.2016.
+ * @author Bulgakov Alexandr & Chalenko Valerii
+ * @version 1.0
  */
 public class RandomValue {
 

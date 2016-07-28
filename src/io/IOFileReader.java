@@ -64,9 +64,10 @@ public class IOFileReader {
         String[] carInfo = parseLine.split(",");
         String carModel = carInfo[0].substring(1, carInfo[0].length());
         String carClass =  carInfo[1];
-        double carFuel = Double.parseDouble(carInfo[2].substring(0,carInfo[2].indexOf('/')));
+        double carPrice = Double.parseDouble(carInfo[2]);
+        double carFuel = Double.parseDouble(carInfo[3].substring(0,carInfo[3].indexOf('/')));
 
-        createCarFromString(carModel,carClass,carFuel);
+        createCarFromString(carModel,carClass,carPrice,carFuel);
 
     }
 
@@ -77,15 +78,15 @@ public class IOFileReader {
      * @param className - String: name of generated class (case sensitive)
      * @param fuel - double: fuel consumption rate
      */
-    private void createCarFromString(String model, String className, double fuel) {
+    private void createCarFromString(String model, String className, double price, double fuel) {
 
         List<Car> newCarList = new ArrayList<>();
 
         try {
             /* creating new class by class name */
             Class<?> someClass = Class.forName(className);
-            Constructor<?> constructor = someClass.getConstructor(double.class, String.class);
-            Object newCar = constructor.newInstance(fuel, model);
+            Constructor<?> constructor = someClass.getConstructor(double.class, double.class, String.class);
+            Object newCar = constructor.newInstance(fuel, price, model);
 
             TaxiCompany.addCarToList((Car) newCar);
 

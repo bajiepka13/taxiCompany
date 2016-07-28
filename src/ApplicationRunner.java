@@ -1,3 +1,4 @@
+import company.TaxiCompany;
 import scanner.ModelScanner;
 import cars.Car;
 

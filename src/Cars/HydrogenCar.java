@@ -1,12 +1,11 @@
-package ParkCars;
+package cars;
 
-import ModelScanner.ModelScanner;
-import Randomizator.RandomValue;
-
-import java.util.Scanner;
+import scanner.ModelScanner;
+import randomizator.RandomValue;
 
 /**
- * Created by skydock on 22.07.2016.
+ * @author Bulgakov Alexandr & Chalenko Valerii
+ * @version 1.0
  */
 public class HydrogenCar extends NonGasCars {
 
@@ -14,11 +13,13 @@ public class HydrogenCar extends NonGasCars {
         fuelConsumptionRate = RandomValue.getRandomNumber(45);
         fuelType = "hydrogen";
         setModel(ModelScanner.getCarModel());
+        setPrice(ModelScanner.getCarPrice());
     }
 
-    public HydrogenCar(double fuelRate, String model){
+    public HydrogenCar(double fuelRate, double price, String model){
         this.fuelConsumptionRate = fuelRate;
         this.fuelType = "hydrogen";
+        this.price = price;
         setModel(model);
     }
 
@@ -32,4 +33,8 @@ public class HydrogenCar extends NonGasCars {
         this.model = model;
     }
 
+    @Override
+    public void setPrice(double price) {
+        super.setPrice(this.price = price);
+    }
 }

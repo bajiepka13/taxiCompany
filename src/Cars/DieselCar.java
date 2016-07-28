@@ -7,25 +7,25 @@ import randomizator.RandomValue;
  * @author Bulgakov Alexandr & Chalenko Valerii
  * @version 1.0
  */
-public class ElectricCar extends NonGasCars {
+public class DieselCar extends GasCars {
 
-    ElectricCar(){
-        fuelConsumptionRate = RandomValue.getRandomNumber(33);
-        fuelType = "electricity";
+    DieselCar(){
+        fuelConsumptionRate = RandomValue.getRandomNumber(12);
+        fuelType = "diesel";
         setModel(ModelScanner.getCarModel());
         setPrice(ModelScanner.getCarPrice());
     }
 
-    public ElectricCar(double fuelRate, double price, String model){
+    public DieselCar(double fuelRate, double price, String model){
         this.fuelConsumptionRate = fuelRate;
-        this.fuelType = "electricity";
+        this.fuelType = "diesel";
         this.price = price;
         setModel(model);
     }
 
     @Override
-    public void getRechargableRate(double d, String s) {
-        super.getRechargableRate(this.fuelConsumptionRate, this.fuelType);
+    public void getRefuelableRate(double d, String s) {
+        super.getRefuelableRate(this.fuelConsumptionRate, this.fuelType);
     }
 
     @Override

@@ -17,6 +17,7 @@ public class ModelScanner {
 
     /**
      * Method generates car name and model from user's input information
+     *
      * @return String: name and model of car, example: "Toyota (Corolla)"
      */
     public static String getCarModel(){
@@ -30,6 +31,7 @@ public class ModelScanner {
 
     /**
      * Shows user dialog and returns boolean for further actions
+     *
      * @return true if new car creation is required
      */
     public static boolean getAnotherCar(){
@@ -49,6 +51,7 @@ public class ModelScanner {
 
     /**
      * Method automates factory car generation
+     *
      * @return String: appropriate for car factory class
      */
     public static String getCarType() {
@@ -89,4 +92,24 @@ public class ModelScanner {
         return car;
     }
 
+    /**
+     * Method shows user fialog and returns the double value of car price
+     *
+     * @return
+     */
+    public static double getCarPrice() {
+
+        System.out.println("\nenter this car price");
+        double price = 0.00;
+        try{
+            if (s.hasNextDouble()){
+                price = s.nextDouble();
+            }
+        } catch (InputMismatchException e){
+            e.printStackTrace();
+        }
+
+        return price;
+
+    }
 }
