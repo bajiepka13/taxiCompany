@@ -1,10 +1,11 @@
-import ParkCars.Car;
+import cars.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by skydock on 25.07.2016.
+ * @author Bulgakov Alexandr & Chalenko Valerii
+ * @version 1.0
  */
 public class TaxiCompany {
 

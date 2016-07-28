@@ -1,13 +1,14 @@
-package IOOperations;
+package io;
 
-import ParkCars.Car;
-import TaxiPark.TaxiCompany;
+import cars.Car;
+import company.TaxiCompany;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Created by skydock on 25.07.2016.
+ * @author Bulgakov Alexandr & Chalenko Valerii
+ * @version 1.0
  */
 public class IOFileWriter {
     public IOFileWriter() throws IOException {

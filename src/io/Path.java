@@ -1,9 +1,10 @@
-package IOOperations;
+package io;
 
 import java.io.File;
 
 /**
- * Created by skydock on 27.07.2016.
+ * @author Bulgakov Alexandr & Chalenko Valerii
+ * @version 1.0
  */
 public class Path {
 

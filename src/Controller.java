@@ -1,18 +1,18 @@
-import IOOperations.IOFileReader;
-import IOOperations.IOFileWriter;
-import ModelScanner.ModelScanner;
-import ParkCars.AutoFactory;
-import ParkCars.Car;
-import IOOperations.Path;
-import TaxiPark.TaxiCompany;
+import io.IOFileReader;
+import io.IOFileWriter;
+import scanner.ModelScanner;
+import cars.AutoFactory;
+import cars.Car;
+import io.Path;
+import company.TaxiCompany;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
- * Created by skydock on 26.07.2016.
+ * @author Bulgakov Alexandr & Chalenko Valerii
+ * @version 1.0
  */
 public class Controller {
 
@@ -25,7 +25,7 @@ public class Controller {
      */
     public static void createCarFrmFactory(){
 
-        TaxiPark.TaxiCompany park = TaxiCompany.getInstance();
+        TaxiCompany park = TaxiCompany.getInstance();
         List<Car> carList = TaxiCompany.getCarList();
 
         AutoFactory autoFactory = new AutoFactory();

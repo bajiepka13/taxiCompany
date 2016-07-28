@@ -1,10 +1,11 @@
-package ModelScanner;
+package scanner;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Created by skydock on 26.07.2016.
+ * @author Bulgakov Alexandr & Chalenko Valerii
+ * @version 1.0
  */
 public class ModelScanner {
 

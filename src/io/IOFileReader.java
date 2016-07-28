@@ -1,6 +1,6 @@
-package IOOperations;
-import ParkCars.Car;
-import TaxiPark.TaxiCompany;
+package io;
+import cars.Car;
+import company.TaxiCompany;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -10,7 +10,8 @@ import java.util.List;
 
 
 /**
- * Created by skydock on 25.07.2016.
+ * @author Bulgakov Alexandr & Chalenko Valerii
+ * @version 1.0
  */
 public class IOFileReader {
 
@@ -21,6 +22,7 @@ public class IOFileReader {
     /**
      * INITIALIZER
      * method initializes BufferedReader and moves it's line to parse method
+     *
      * @return void
      */
     private void initBufferedReader() {
@@ -54,7 +56,8 @@ public class IOFileReader {
     /**
      * method parses incomming string to String[] and then generates parameters for
      * further class constructor generator
-      * @param parseLine - String of params, separated by ','
+     *
+     * @param parseLine - String of params, separated by ','
      */
     private void parseLineOfFile(String parseLine) {
         /* splitting string into array by commas */
@@ -69,6 +72,7 @@ public class IOFileReader {
 
     /**
      * Method creates instance of certain class and adds it to singleton list
+     *
      * @param model - String: model of car, for example 'Toyota (Corolla)'
      * @param className - String: name of generated class (case sensitive)
      * @param fuel - double: fuel consumption rate
@@ -79,21 +83,13 @@ public class IOFileReader {
 
         try {
             /* creating new class by class name */
-            Class<?> someClass = Class.forName("ParkCars." + className);
+            Class<?> someClass = Class.forName(className);
             Constructor<?> constructor = someClass.getConstructor(double.class, String.class);
             Object newCar = constructor.newInstance(fuel, model);
 
             TaxiCompany.addCarToList((Car) newCar);
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
         } finally {
             System.out.println("new class added");

@@ -1,27 +1,24 @@
-import ModelScanner.ModelScanner;
-import ParkCars.Car;
-import Randomizator.RandomValue;
-import TaxiPark.*;
+import scanner.ModelScanner;
+import cars.Car;
 
 import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by skydock on 21.07.2016.
+ * @author Bulgakov Alexandr & Chalenko Valerii
+ * @version 1.0
  */
-public class Main {
+public class ApplicationRunner {
 
-    public Main(){}
+    public ApplicationRunner(){}
 
     public static void main(String[] args) throws IOException {
-
-        //RandomValue myRandom = new RandomValue();
 
         /* загружаемся из файла по-умолчанию */
         Controller.initTaxiPark();
 
         System.out.println("printing inited cars:");
-        List<Car> cars = TaxiPark.TaxiCompany.getCarList();
+        List<Car> cars = TaxiCompany.getCarList();
         for (Car car : cars){
             System.out.println(car.toString());
         }
