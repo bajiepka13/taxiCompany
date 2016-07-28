@@ -28,15 +28,6 @@ public class ApplicationRunner {
             System.out.println(car.toString());
         }
 
-        /* sort test */
-//        System.out.println("\nsorted by price:");
-//        List<Car> copy = cars;
-//
-//        TaxiCompany.sortCarList(copy, decrease);
-//        for (Car car : copy){
-//            System.out.println(car.toString());
-//        }
-
         while (ModelScanner.getAnotherCar()) {
             /* запускаем фабрику */
             Controller.createCarFrmFactory();
