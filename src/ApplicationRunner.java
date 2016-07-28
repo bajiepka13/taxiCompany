@@ -3,6 +3,7 @@ import scanner.ModelScanner;
 import cars.Car;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,14 +16,26 @@ public class ApplicationRunner {
 
     public static void main(String[] args) throws IOException {
 
+        boolean decrease = false;
+
         /* загружаемся из файла по-умолчанию */
         Controller.initTaxiPark();
 
         System.out.println("printing inited cars:");
         List<Car> cars = TaxiCompany.getCarList();
+        TaxiCompany.sortCarList(cars, decrease);
         for (Car car : cars){
             System.out.println(car.toString());
         }
+
+        /* sort test */
+//        System.out.println("\nsorted by price:");
+//        List<Car> copy = cars;
+//
+//        TaxiCompany.sortCarList(copy, decrease);
+//        for (Car car : copy){
+//            System.out.println(car.toString());
+//        }
 
         while (ModelScanner.getAnotherCar()) {
             /* запускаем фабрику */
