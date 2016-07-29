@@ -20,14 +20,15 @@ public class IOTests {
     static int carQuantity;
 
     @BeforeClass
+    /* singleton's List initialization from file */
     public static void onlyOnce(){
         IOFileReader testReader = new IOFileReader();
     }
 
+    @Test
     /* This test creates Cars from file contents with IOFileReader class
     *  and compares them with quantity, got by looping lines from original fila
     */
-    @Test
     public void testReader() throws FileNotFoundException, IOException {
 
         carQuantity = TaxiCompany.getCarList().size();
@@ -36,10 +37,10 @@ public class IOTests {
 
     }
 
+    @Test
     /* This test writes created cars to file from singleton list and then checks the
     *  quantity of lines written according to list size
     */
-    @Test
     public void testWriter() throws IOException {
 
         IOFileWriter writer = new IOFileWriter();
@@ -47,6 +48,7 @@ public class IOTests {
         Assert.assertEquals(carQuantity, manualFileLooping());
     }
 
+    /* Method counts & returns current file's row quantity */
     protected int manualFileLooping() throws IOException {
 
         BufferedReader buffer = new BufferedReader(new FileReader(Path.getFile()));
