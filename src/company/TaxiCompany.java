@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
 public class TaxiCompany {
@@ -29,15 +29,14 @@ public class TaxiCompany {
     }
 
     /**
-     * Mothod sorts all elements in array by value of one field
-     *      *
+     * Method sorts all elements in array by value of one field
      */
     public static List sortCarList(List<Car> list, boolean direction){
 
         Car tempElement;
         for (int i = 0; i < list.size(); i++) {
 
-            boolean changed = false;
+            boolean isChanged = false;
 
             double price = Double.parseDouble(list.get(i).toString().split(",")[2]);
             Car tempMin = list.get(i);
@@ -46,13 +45,13 @@ public class TaxiCompany {
                 double nextPrice = Double.parseDouble(list.get(j).toString().split(",")[2]);
                 if (direction ? nextPrice < price : nextPrice > price){
                     tempMin = list.get(j);
-                    changed = true;
+                    isChanged = true;
                 }
-                if (changed){
+                if (isChanged){
                     tempElement = list.get(i);
                     list.set(i, tempMin);
                     list.set(j, tempElement);
-                    changed = false;
+                    isChanged = false;
                 }
             }
         }

@@ -3,37 +3,37 @@ import scanner.ModelScanner;
 import cars.Car;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
 public class ApplicationRunner {
 
-    public ApplicationRunner(){}
+    public ApplicationRunner() {
+    }
 
     public static void main(String[] args) throws IOException {
 
-        boolean decrease = false;
+        boolean sortOrderDecrease = false;
 
-        /* загружаемся из файла по-умолчанию */
+        /* Load data from file by default */
         Controller.initTaxiPark();
 
         System.out.println("printing inited cars:");
         List<Car> cars = TaxiCompany.getCarList();
-        TaxiCompany.sortCarList(cars, decrease);
-        for (Car car : cars){
+        TaxiCompany.sortCarList(cars, sortOrderDecrease);
+        for (Car car : cars) {
             System.out.println(car.toString());
         }
 
         while (ModelScanner.getAnotherCar()) {
-            /* запускаем фабрику */
-            Controller.createCarFrmFactory();
+            /* Run the factory */
+            Controller.createCarFromFactory();
         }
 
-        /* сохраняемся в файл по-умолчанию */
+        /* Save data to file by default */
         Controller.saveTaxiPark();
 
     }
