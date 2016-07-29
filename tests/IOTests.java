@@ -18,7 +18,6 @@ import java.io.*;
 public class IOTests {
 
     static int carQuantity;
-    static int carCount;
 
     @BeforeClass
     public static void onlyOnce(){
@@ -32,16 +31,8 @@ public class IOTests {
     public void testReader() throws FileNotFoundException, IOException {
 
         carQuantity = TaxiCompany.getCarList().size();
-        carCount = 0;
-        BufferedReader buffer = new BufferedReader(new FileReader(Path.getFile()));
-        String bufferLine;
-
-        while ((bufferLine = buffer.readLine()) != null){
-            carCount++;
-        }
-        buffer.close();
-
-        Assert.assertEquals(carQuantity, carCount);
+        System.out.println("should be: " + carQuantity);
+        Assert.assertEquals(carQuantity, manualFileLooping());
 
     }
 
@@ -50,7 +41,13 @@ public class IOTests {
     */
     @Test
     public void testWriter() throws IOException {
+
         IOFileWriter writer = new IOFileWriter();
+        System.out.println("should be: " + carQuantity);
+        Assert.assertEquals(carQuantity, manualFileLooping());
+    }
+
+    protected int manualFileLooping() throws IOException {
 
         BufferedReader buffer = new BufferedReader(new FileReader(Path.getFile()));
         String bufferLine;
@@ -59,6 +56,7 @@ public class IOTests {
             fileLines++;
         }
         buffer.close();
-        Assert.assertTrue(fileLines == carCount);
+        System.out.println("counted: " + fileLines);
+        return fileLines;
     }
 }
