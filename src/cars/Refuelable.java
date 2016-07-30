@@ -1,10 +1,10 @@
 package cars;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
-public interface Refuelable {
+interface Refuelable {
 
     void getRefuelableRate(double d, String s);
 

@@ -3,13 +3,13 @@ package cars;
 import java.util.Locale;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
-public abstract class NonGasCars extends Vehicle implements Rechargeable {
+abstract class NonGasCars extends Vehicle implements Rechargeable {
 
     @Override
-    public void getRechargableRate(double d, String s) {
+    public void getRechargableRate(double fuelConsumptionRate, String fuelType) {
         System.out.println("Fuel this car with " + fuelType + " for " + fuelConsumptionRate + " per 100 km.");
     }
 

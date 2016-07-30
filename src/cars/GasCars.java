@@ -3,14 +3,14 @@ package cars;
 import java.util.Locale;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
-public abstract class GasCars extends Vehicle implements Refuelable{
+abstract class GasCars extends Vehicle implements Refuelable {
 
     @Override
     public void getRefuelableRate(double fuelConsumptionRate, String fuelType) {
-        System.out.println("Fuel this car with " + fuelType + " for " + fuelConsumptionRate + " per 100 km.");
+        System.out.println("Fuel this car with " + fuelType + " for " + fuelConsumptionRate + "L per 100 km.");
     }
 
     @Override

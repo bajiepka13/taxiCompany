@@ -3,7 +3,7 @@ package io;
 import java.io.File;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
 public class Path {
