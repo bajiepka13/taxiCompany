@@ -49,8 +49,8 @@ public class IOFileReader {
         } finally {
             try {
                 reader.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            } catch (IOException | NullPointerException e) {
+                e.printStackTrace();
             }
         }
     }
