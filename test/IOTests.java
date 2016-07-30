@@ -12,24 +12,22 @@ import org.junit.Test;
 
 import java.io.*;
 
-/**
- * Created by skydock on 29.07.2016.
- */
-public class IOTests {
 
-    static int carQuantity;
+public class IOTests {
+    static IOFileReader testReader;
+    private static int carQuantity;
 
     @BeforeClass
-    /* singleton's List initialization from file */
-    public static void onlyOnce(){
-        IOFileReader testReader = new IOFileReader();
+    public static void SetUpClass() throws Exception {
+        /* singleton's List initialization from file */
+        new IOFileReader();
     }
 
     @Test
     /* This test creates Cars from file contents with IOFileReader class
-    *  and compares them with quantity, got by looping lines from original fila
+    *  and compares them with quantity, got by looping lines from original file
     */
-    public void testReader() throws FileNotFoundException, IOException {
+    public void testReader() throws Exception {
 
         carQuantity = TaxiCompany.getCarList().size();
         System.out.println("should be: " + carQuantity);
@@ -41,7 +39,7 @@ public class IOTests {
     /* This test writes created cars to file from singleton list and then checks the
     *  quantity of lines written according to list size
     */
-    public void testWriter() throws IOException {
+    public void testWriter() throws Exception {
 
         IOFileWriter writer = new IOFileWriter();
         System.out.println("should be: " + carQuantity);
@@ -49,12 +47,12 @@ public class IOTests {
     }
 
     /* Method counts & returns current file's row quantity */
-    protected int manualFileLooping() throws IOException {
+    protected int manualFileLooping() throws Exception {
 
         BufferedReader buffer = new BufferedReader(new FileReader(Path.getFile()));
         String bufferLine;
         int fileLines = 0;
-        while ((bufferLine = buffer.readLine()) != null){
+        while ((bufferLine = buffer.readLine()) != null) {
             fileLines++;
         }
         buffer.close();
