@@ -44,8 +44,8 @@ public class IOFileReader {
                 }
                 reader.close();
             }
-        } catch (Throwable t) {
-            t.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             try {
                 reader.close();
@@ -69,7 +69,7 @@ public class IOFileReader {
 
         /* splitting string into array by commas */
         String[] carInfo = parseLine.split(",");
-        String carModel = carInfo[CAR_MODEL_INDEX].substring(1, carInfo[CAR_MODEL_INDEX].length());
+        String carModel = carInfo[CAR_MODEL_INDEX].substring(1);
         String carClass = carInfo[CAR_CLASS_INDEX];
         double carPrice = Double.parseDouble(carInfo[CAR_PRICE_INDEX]);
         double carFuel = Double.parseDouble(carInfo[CAR_FUEL_INDEX].substring(0, carInfo[CAR_FUEL_INDEX].indexOf('/')));
