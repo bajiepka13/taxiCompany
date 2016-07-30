@@ -1,4 +1,5 @@
 package io;
+
 import cars.Car;
 import company.TaxiCompany;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * @version 1.0
  */
 public class IOFileReader {
+
 
     public IOFileReader() {
         initBufferedReader();
@@ -54,29 +56,34 @@ public class IOFileReader {
     }
 
     /**
-     * method parses incomming string to String[] and then generates parameters for
+     * method parses incoming string to String[] and then generates parameters for
      * further class constructor generator
      *
      * @param parseLine - String of params, separated by ','
      */
     private void parseLineOfFile(String parseLine) {
+        final int CAR_MODEL_INDEX = 0;
+        final int CAR_CLASS_INDEX = 1;
+        final int CAR_PRICE_INDEX = 2;
+        final int CAR_FUEL_INDEX = 3;
+
         /* splitting string into array by commas */
         String[] carInfo = parseLine.split(",");
-        String carModel = carInfo[0].substring(1, carInfo[0].length());
-        String carClass =  carInfo[1];
-        double carPrice = Double.parseDouble(carInfo[2]);
-        double carFuel = Double.parseDouble(carInfo[3].substring(0,carInfo[3].indexOf('/')));
+        String carModel = carInfo[CAR_MODEL_INDEX].substring(1, carInfo[CAR_MODEL_INDEX].length());
+        String carClass = carInfo[CAR_CLASS_INDEX];
+        double carPrice = Double.parseDouble(carInfo[CAR_PRICE_INDEX]);
+        double carFuel = Double.parseDouble(carInfo[CAR_FUEL_INDEX].substring(0, carInfo[CAR_FUEL_INDEX].indexOf('/')));
 
-        createCarFromString(carModel,carClass,carPrice,carFuel);
+        createCarFromString(carModel, carClass, carPrice, carFuel);
 
     }
 
     /**
      * Method creates instance of certain class and adds it to singleton list
      *
-     * @param model - String: model of car, for example 'Toyota (Corolla)'
+     * @param model     - String: model of car, for example 'Toyota (Corolla)'
      * @param className - String: name of generated class (case sensitive)
-     * @param fuel - double: fuel consumption rate
+     * @param fuel      - double: fuel consumption rate
      */
     private void createCarFromString(String model, String className, double price, double fuel) {
 

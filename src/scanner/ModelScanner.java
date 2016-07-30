@@ -23,14 +23,14 @@ public class ModelScanner {
      */
     public static String getCarModel() {
         final int CAR_PARAM_QUANTITY = 2;
-        final int CAR_PARAM_BRAND = 0;
-        final int CAR_PARAM_MODEL = 1;
+        final int CAR_BRAND_INDEX = 0;
+        final int CAR_MODEL_INDEX = 1;
 
         for (int i = 0; i < CAR_PARAM_QUANTITY; i++) {
-            System.out.println(i == CAR_PARAM_BRAND ? "Enter car brand: " : "Enter car model: ");
+            System.out.println(i == CAR_BRAND_INDEX ? "Enter car brand: " : "Enter car model: ");
             model[i] = s.next();
         }
-        return String.format("%s (%s)", model[CAR_PARAM_BRAND], model[CAR_PARAM_MODEL]);
+        return String.format("%s (%s)", model[CAR_BRAND_INDEX], model[CAR_MODEL_INDEX]);
     }
 
     /**
