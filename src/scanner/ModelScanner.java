@@ -9,8 +9,8 @@ import java.util.Scanner;
  */
 public class ModelScanner {
 
-    final static String[] model = new String[]{"", ""};
-    final static Scanner s = new Scanner(System.in);
+    final static String[] MODEL = new String[]{"", ""};
+    final static Scanner SCANNER = new Scanner(System.in);
 
 
     private ModelScanner() {
@@ -28,9 +28,9 @@ public class ModelScanner {
 
         for (int i = 0; i < CAR_PARAM_QUANTITY; i++) {
             System.out.println(i == CAR_BRAND_INDEX ? "Enter car brand: " : "Enter car model: ");
-            model[i] = s.next();
+            MODEL[i] = SCANNER.next();
         }
-        return String.format("%s (%s)", model[CAR_BRAND_INDEX], model[CAR_MODEL_INDEX]);
+        return String.format("%s (%s)", MODEL[CAR_BRAND_INDEX], MODEL[CAR_MODEL_INDEX]);
     }
 
     /**
@@ -40,17 +40,13 @@ public class ModelScanner {
      */
     public static boolean getAnotherCar() {
 
-        Boolean b = null;
+        Boolean isCarNeedsToBeAdded = false;
 
         System.out.println("\ndo you want to add car to taxi park? (yes / no)");
-        String string = s.next();
+        String string = SCANNER.next();
 
-        if (string.equals("yes")) {
-            b = true;
-        } else {
-            b = false;
-        }
-        return b;
+        isCarNeedsToBeAdded = string.equals("yes");
+        return isCarNeedsToBeAdded;
     }
 
     /**
@@ -69,8 +65,8 @@ public class ModelScanner {
                 "\n4 - diesel car\n");
 
         try {
-            if (s.hasNextInt()) {
-                int choice = s.nextInt();
+            if (SCANNER.hasNextInt()) {
+                int choice = SCANNER.nextInt();
 
                 switch (choice) {
                     case 1:
@@ -106,8 +102,8 @@ public class ModelScanner {
         System.out.println("\nenter this car price");
         double price = 0.00;
         try {
-            if (s.hasNextDouble()) {
-                price = s.nextDouble();
+            if (SCANNER.hasNextDouble()) {
+                price = SCANNER.nextDouble();
             }
         } catch (InputMismatchException e) {
             e.printStackTrace();

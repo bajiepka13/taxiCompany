@@ -4,13 +4,15 @@ import scanner.ModelScanner;
 import randomizator.RandomValue;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
 public class ElectricCar extends NonGasCars {
 
+    private static final int AVG_ELECTRICITY_CONSUMPTION = 11;
+
     ElectricCar(){
-        fuelConsumptionRate = RandomValue.getRandomNumber(33);
+        fuelConsumptionRate = RandomValue.getRandomNumber(AVG_ELECTRICITY_CONSUMPTION);
         fuelType = "electricity";
         setModel(ModelScanner.getCarModel());
         setPrice(ModelScanner.getCarPrice());

@@ -4,13 +4,15 @@ import scanner.ModelScanner;
 import randomizator.RandomValue;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
 public class HydrogenCar extends NonGasCars {
 
+    private static final int AVG_HYDROGEN_CONSUMPTION = 5;
+
     HydrogenCar(){
-        fuelConsumptionRate = RandomValue.getRandomNumber(45);
+        fuelConsumptionRate = RandomValue.getRandomNumber(AVG_HYDROGEN_CONSUMPTION);
         fuelType = "hydrogen";
         setModel(ModelScanner.getCarModel());
         setPrice(ModelScanner.getCarPrice());

@@ -4,12 +4,15 @@ import scanner.ModelScanner;
 import randomizator.RandomValue;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
 public class GasCar extends GasCars {
+
+    private static final int AVG_FUEL_CONSUMPTION = 9;
+
     GasCar(){
-        fuelConsumptionRate = RandomValue.getRandomNumber(8);
+        fuelConsumptionRate = RandomValue.getRandomNumber(AVG_FUEL_CONSUMPTION);
         fuelType = "gas";
         setModel(ModelScanner.getCarModel());
         setPrice(ModelScanner.getCarPrice());

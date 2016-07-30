@@ -4,13 +4,15 @@ import scanner.ModelScanner;
 import randomizator.RandomValue;
 
 /**
- * @author Bulgakov Alexandr & Chalenko Valerii
+ * @author Bulgakov Alexander & Chalenko Valerii
  * @version 1.0
  */
 public class DieselCar extends GasCars {
 
+    private static final int AVG_FUEL_CONSUMPTION = 7;
+
     DieselCar(){
-        fuelConsumptionRate = RandomValue.getRandomNumber(12);
+        fuelConsumptionRate = RandomValue.getRandomNumber(AVG_FUEL_CONSUMPTION);
         fuelType = "diesel";
         setModel(ModelScanner.getCarModel());
         setPrice(ModelScanner.getCarPrice());
