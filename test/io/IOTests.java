@@ -20,7 +20,6 @@ import static org.junit.Assert.*;
 
 
 public class IOTests {
-    private final String SEND_DATA = "\n";
     private static int carQuantityInList;
     private static int initFileLinesQuantity;
     private final StringBuilder stringBuilder = new StringBuilder();
@@ -53,7 +52,7 @@ public class IOTests {
     }
 
 
-    @Test
+    @Test(timeout = 1000)
     /* This test creates Cars from file contents with IOFileReader class
     *  and compares them with quantity, got by counting lines from original file
     */
@@ -63,7 +62,7 @@ public class IOTests {
 
     }
 
-    @Test
+    @Test(timeout = 1000)
     /* This test writes created car to file from singleton list and then checks the
     *  quantity of lines written according to list size
     */
@@ -73,6 +72,7 @@ public class IOTests {
         final String CAR_MODEL = "TestCar";
         final String CAR_PRICE = "99999";
         final String COMPLETE_ENTRY = "no";
+        final String SEND_DATA = "\n";
 
         stringBuilder
                 .append(CAR_TYPE).append(SEND_DATA)
@@ -80,6 +80,7 @@ public class IOTests {
                 .append(CAR_MODEL).append(SEND_DATA)
                 .append(CAR_PRICE).append(SEND_DATA)
                 .append(COMPLETE_ENTRY).append(SEND_DATA);
+
         final String TEST_CAR_DATA = stringBuilder.toString();
 
         addCarToFile(TEST_CAR_DATA);
@@ -87,19 +88,20 @@ public class IOTests {
         carQuantityInList = TaxiCompany.getCarList().size();
 
         int expectedCarQuantity = initFileLinesQuantity + counterOfAddedToListCars;
-        boolean isLinesInListExpected = (expectedCarQuantity == carQuantityInList);
-        boolean isLinesInFileExpected = (expectedCarQuantity == countLinesInFile());
+        boolean areLinesInListExpected = (expectedCarQuantity == carQuantityInList);
+        boolean areLinesInFileExpected = (expectedCarQuantity == countLinesInFile());
 
-        assertTrue(isLinesInListExpected & isLinesInFileExpected);
+        assertTrue(areLinesInListExpected & areLinesInFileExpected);
 
     }
+
 
     private void addCarToFile(String carData) throws IOException {
 
         /* Generate string with car description and add to carList */
         carList.add(autoFactory.getCar(getCarFromEmulatedInput(carData)));
         counterOfAddedToListCars++;
-
+        
         /* write carList to file */
         new IOFileWriter();
     }
