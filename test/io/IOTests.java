@@ -20,6 +20,7 @@ public class IOTests {
     private static int carQuantityInList;
     private static int initFileLinesQuantity;
     private static IOFileReader ioFileReader;
+    private final StringBuilder stringBuilder = new StringBuilder();
 
 
     @BeforeClass
@@ -44,14 +45,20 @@ public class IOTests {
     *  quantity of lines written according to list size
     */
     public void testWriterQuantityAfterOneCarAdd() throws Exception {
-        final String ENTER_CAR_TYPE = "1" + SEND_DATA;
-        final String ENTER_CAR_BRAND = "TestCompany" + SEND_DATA;
-        final String ENTER_CAR_MODEL = "TestCar" + SEND_DATA;
-        final String ENTER_CAR_PRICE = "99999" + SEND_DATA;
-        final String COMPLETE_ENTRY = "no" + SEND_DATA;
+        final String CAR_TYPE = "1";
+        final String CAR_BRAND = "TestCompany";
+        final String CAR_MODEL = "TestCar";
+        final String CAR_PRICE = "99999";
+        final String COMPLETE_ENTRY = "no";
 
-        final String TEST_CAR_DATA =
-                ENTER_CAR_TYPE + ENTER_CAR_BRAND + ENTER_CAR_MODEL + ENTER_CAR_PRICE + COMPLETE_ENTRY;
+        stringBuilder
+                .append(CAR_TYPE).append(SEND_DATA)
+                .append(CAR_BRAND).append(SEND_DATA)
+                .append(CAR_MODEL).append(SEND_DATA)
+                .append(CAR_PRICE).append(SEND_DATA)
+                .append(COMPLETE_ENTRY).append(SEND_DATA);
+
+        final String TEST_CAR_DATA = stringBuilder.toString();
 
         /* from Controller.createCarFromFactory() */
         TaxiCompany.getInstance();
