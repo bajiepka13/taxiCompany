@@ -56,7 +56,7 @@ public class ModelScanner {
      */
     public static String getCarType() {
 
-        String car = "gas";
+        String carType = "gas";
 
         System.out.println("Enter the number of car type you want to add:" +
                 "\n1 - electromobile" +
@@ -70,26 +70,26 @@ public class ModelScanner {
 
                 switch (choice) {
                     case 1:
-                        car = "electric";
+                        carType = "electric";
                         break;
                     case 2:
-                        car = "hydrogen";
+                        carType = "hydrogen";
                         break;
                     case 3:
-                        car = "gas";
+                        carType = "gas";
                         break;
                     case 4:
-                        car = "diesel";
+                        carType = "diesel";
                         break;
                     default:
-                        car = "gas";
+                        carType = "gas";
                         break;
                 }
             }
         } catch (InputMismatchException in) {
             in.printStackTrace();
         }
-        return car;
+        return carType;
     }
 
     /**
@@ -100,16 +100,16 @@ public class ModelScanner {
     public static double getCarPrice() {
 
         System.out.println("\nenter this car price");
-        double price = 0.00;
+        double carPrice = 0.00;
         try {
             if (SCANNER.hasNextDouble()) {
-                price = SCANNER.nextDouble();
+                carPrice = SCANNER.nextDouble();
             }
         } catch (InputMismatchException e) {
             e.printStackTrace();
         }
 
-        return price;
+        return carPrice;
 
     }
 }
