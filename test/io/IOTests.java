@@ -4,6 +4,7 @@ package io;
 import cars.AutoFactory;
 import cars.Car;
 import company.TaxiCompany;
+import org.junit.Before;
 import scanner.ModelScanner;
 
 import org.junit.AfterClass;
@@ -23,10 +24,10 @@ public class IOTests {
     private final String SEND_DATA = "\n";
     private static int carQuantityInList;
     private static int initFileLinesQuantity;
-    private static IOFileReader ioFileReader;
     private final StringBuilder stringBuilder = new StringBuilder();
-    private final static File originalFile = new File("taxiCompany.txt");
+    private final static File originalFile = Path.getFile();
     private final static File backupFile = new File("taxiCompany.backup");
+    private int counterOfAddedCars = 0;
 
 
     @BeforeClass
@@ -37,8 +38,15 @@ public class IOTests {
         initFileLinesQuantity = countLinesInFile();
 
         /* singleton's List initialization from file */
-        ioFileReader = new IOFileReader();
+        new IOFileReader();
     }
+
+    @Before
+    public void SetUp() throws Exception {
+        stringBuilder.delete(0, stringBuilder.length());
+
+    }
+
 
     @Test
     /* This test creates Cars from file contents with IOFileReader class
@@ -68,6 +76,14 @@ public class IOTests {
                 .append(CAR_PRICE).append(SEND_DATA)
                 .append(COMPLETE_ENTRY).append(SEND_DATA);
 
+        factoryRunnerForTests();
+
+        carQuantityInList = TaxiCompany.getCarList().size();
+        int expectedCarQuantityAfterOneRun = initFileLinesQuantity + counterOfAddedCars;
+        assertEquals(carQuantityInList, expectedCarQuantityAfterOneRun);
+    }
+
+    private void factoryRunnerForTests() throws IOException {
         final String TEST_CAR_DATA = stringBuilder.toString();
 
         /* from Controller.createCarFromFactory() */
@@ -84,10 +100,7 @@ public class IOTests {
 
         /* from Controller.saveTaxiPark() */
         new IOFileWriter();
-
-        carQuantityInList = carList.size();
-        int expectedCarQuantityAfterOneRun = initFileLinesQuantity + CAR_TO_ADD_PER_RUN;
-        assertEquals(carQuantityInList, expectedCarQuantityAfterOneRun);
+        counterOfAddedCars++;
     }
 
     /* Method counts & returns current file's row quantity */
@@ -113,9 +126,8 @@ public class IOTests {
 
     @AfterClass
     public static void TearDownClass() throws Exception {
-        initFileLinesQuantity = 0;
-        ioFileReader = null;
-        /* restore from backup the original taxiCompany file */
+        System.setIn(System.in);
+        /* restore the original taxiCompany file from backup */
         copyTaxiCompanyFile(backupFile, originalFile);
     }
 
