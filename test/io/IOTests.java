@@ -20,15 +20,16 @@ import static org.junit.Assert.*;
 
 
 public class IOTests {
-    private final int CAR_TO_ADD_PER_RUN = 1;
     private final String SEND_DATA = "\n";
     private static int carQuantityInList;
     private static int initFileLinesQuantity;
     private final StringBuilder stringBuilder = new StringBuilder();
     private final static File originalFile = Path.getFile();
     private final static File backupFile = new File("taxiCompany.backup");
-    private int counterOfAddedCars = 0;
+    private int counterOfAddedToListCars = 0;
 
+    private static List<Car> carList = TaxiCompany.getCarList();
+    private static AutoFactory autoFactory = new AutoFactory();
 
     @BeforeClass
     public static void SetUpClass() throws Exception {
@@ -39,6 +40,10 @@ public class IOTests {
 
         /* singleton's List initialization from file */
         new IOFileReader();
+
+        /* init TaxiCompany */
+        TaxiCompany.getInstance();
+
     }
 
     @Before
@@ -75,32 +80,28 @@ public class IOTests {
                 .append(CAR_MODEL).append(SEND_DATA)
                 .append(CAR_PRICE).append(SEND_DATA)
                 .append(COMPLETE_ENTRY).append(SEND_DATA);
-
-        factoryRunnerForTests();
-
-        carQuantityInList = TaxiCompany.getCarList().size();
-        int expectedCarQuantityAfterOneRun = initFileLinesQuantity + counterOfAddedCars;
-        assertEquals(carQuantityInList, expectedCarQuantityAfterOneRun);
-    }
-
-    private void factoryRunnerForTests() throws IOException {
         final String TEST_CAR_DATA = stringBuilder.toString();
 
-        /* from Controller.createCarFromFactory() */
-        TaxiCompany.getInstance();
-        List<Car> carList = TaxiCompany.getCarList();
-        AutoFactory autoFactory = new AutoFactory();
+        addCarToFile(TEST_CAR_DATA);
+
+        carQuantityInList = TaxiCompany.getCarList().size();
+
+        int expectedCarQuantity = initFileLinesQuantity + counterOfAddedToListCars;
+        boolean isLinesInListExpected = (expectedCarQuantity == carQuantityInList);
+        boolean isLinesInFileExpected = (expectedCarQuantity == countLinesInFile());
+
+        assertTrue(isLinesInListExpected & isLinesInFileExpected);
+
+    }
+
+    private void addCarToFile(String carData) throws IOException {
 
         /* Generate string with car description and add to carList */
-        carList.add(autoFactory.getCar(getCarFromEmulatedInput(TEST_CAR_DATA)));
+        carList.add(autoFactory.getCar(getCarFromEmulatedInput(carData)));
+        counterOfAddedToListCars++;
 
-        for (Car car : carList) {
-            System.out.println(car.getClass().getName() + " : " + car.toString());
-        }
-
-        /* from Controller.saveTaxiPark() */
+        /* write carList to file */
         new IOFileWriter();
-        counterOfAddedCars++;
     }
 
     /* Method counts & returns current file's row quantity */
@@ -127,6 +128,8 @@ public class IOTests {
     @AfterClass
     public static void TearDownClass() throws Exception {
         System.setIn(System.in);
+        carList = null;
+        autoFactory = null;
         /* restore the original taxiCompany file from backup */
         copyTaxiCompanyFile(backupFile, originalFile);
     }
