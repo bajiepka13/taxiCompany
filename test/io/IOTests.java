@@ -1,16 +1,20 @@
 package io;
 
+
 import cars.AutoFactory;
 import cars.Car;
 import company.TaxiCompany;
+import scanner.ModelScanner;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import scanner.ModelScanner;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.List;
 
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static org.junit.Assert.*;
 
 
@@ -21,12 +25,18 @@ public class IOTests {
     private static int initFileLinesQuantity;
     private static IOFileReader ioFileReader;
     private final StringBuilder stringBuilder = new StringBuilder();
+    private final static File originalFile = new File("taxiCompany.txt");
+    private final static File backupFile = new File("backupOfTaxiCompany.txt");
 
 
     @BeforeClass
     public static void SetUpClass() throws Exception {
-        /* singleton's List initialization from file */
+        /* backup the original taxiCompany file */
+        copyTaxiCompanyFile(originalFile, backupFile);
+
         initFileLinesQuantity = countLinesInFile();
+
+        /* singleton's List initialization from file */
         ioFileReader = new IOFileReader();
     }
 
@@ -96,9 +106,18 @@ public class IOTests {
         return ModelScanner.getCarType();
     }
 
+    private static void copyTaxiCompanyFile(File source, File dest) throws IOException {
+        Files.copy(source.toPath(), dest.toPath(), REPLACE_EXISTING);
+
+    }
+
     @AfterClass
     public static void TearDownClass() throws Exception {
         initFileLinesQuantity = 0;
         ioFileReader = null;
+        /* restore from backup the original taxiCompany file */
+        copyTaxiCompanyFile(backupFile, originalFile);
     }
+
+
 }
