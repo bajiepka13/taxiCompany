@@ -26,7 +26,7 @@ public class IOTests {
     private static IOFileReader ioFileReader;
     private final StringBuilder stringBuilder = new StringBuilder();
     private final static File originalFile = new File("taxiCompany.txt");
-    private final static File backupFile = new File("backupOfTaxiCompany.txt");
+    private final static File backupFile = new File("taxiCompany.backup");
 
 
     @BeforeClass
